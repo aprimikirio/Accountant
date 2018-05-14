@@ -1,0 +1,1421 @@
+﻿<Window x:Class="WRK.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="MainWindow" Height="850" Width="1200">
+
+    <!-- Ресурсы проекта, типа переменные и вот это вот всё -->
+    <Window.Resources>
+        <Thickness x:Key="TxtBlkMrgn" Left="4" Top="2" Right="5" Bottom="0" />
+        <sys:Double x:Key="TxtBlkHeight">14</sys:Double>
+        <Thickness x:Key="TxtBxMrgn" Left="2" Top="1" Right="5" Bottom="0" />
+        <sys:Double x:Key="TxtBxHeight">20</sys:Double>
+        <sys:Double x:Key="ChkBxHeight">20</sys:Double>
+        <Thickness x:Key="BigTxtBxMrgn" Left="4" Right="5" />
+        <sys:Double x:Key="FntSizeB">17</sys:Double>
+        <sys:Double x:Key="FntSizeS">15</sys:Double>
+
+        <Style TargetType="{x:Type Grid}" x:Key="CntntGridStyle">
+            <!--<Setter Property="Margin" Value="0,0,0,10" />-->
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="HdrTxtBlkStyle">
+            <Setter Property="Margin" Value="2,2,5,0" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeB}" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="SrcHdrTxtBlkStyle">
+            <Setter Property="Margin" Value="2,2,5,0" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeB}" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="TxtBlkStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBlkMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="TxtBlkGrndBaStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBlkMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBox}" x:Key="TxtBxStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:MaskedTextBox}" x:Key="MskMbleStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Mask" Value="+38(000)00-00-000" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:MaskedTextBox}" x:Key="MskPhneStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Mask" Value="000-00-00" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:MaskedTextBox}" x:Key="MskYearStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Mask" Value="0000" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:MaskedTextBox}" x:Key="MskDateStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Mask" Value="00.00.0000" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:MaskedTextBox}" x:Key="MskDateTimeStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Mask" Value="00.00.0000 00:00" />
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}" x:Key="CmbBxStyle">
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+            <Setter Property="Height" Value="Auto" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="IsEditable" Value="True" />
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}" x:Key="ChkBxStyle">
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Margin" Value="{StaticResource TxtBxMrgn}" />
+        </Style>
+
+        <Style TargetType="{x:Type RadioButton}" x:Key="RdBtnStyle">
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="BtnStyle">
+            <Setter Property="Margin" Value="2,0,5,3" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Height" Value="Auto" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="MnBtnStyle">
+            <Setter Property="Margin" Value="2,0,5,3" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeS}" />
+            <Setter Property="Height" Value="Auto" />
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}" x:Key="DtGrdStyle">
+            <Setter Property="Margin" Value="2,2,5,5" />
+        </Style>
+
+        <Style TargetType="{x:Type Label}" x:Key="LblHdrStyle">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeB}" />
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="TbTmHdrStyle">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="{StaticResource FntSizeB}" />
+        </Style>
+
+        <Style TargetType="{x:Type TabItem}" x:Key="TabCLStyle">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+
+    </Window.Resources>
+
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- Главный таб контрол-->
+        <TabControl Grid.Column="1" x:Name="MainTabControl" BorderThickness="0">
+            <!-- Вкладка добавление сотрудника -->
+            <TabItem Header="Додати співробітника" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabAddWrkrMainGrid" ShowGridLines="False">
+
+                    <!-- Разделение на три основных грида колонны -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Левый грид колонна -->
+                    <Grid x:Name="TabAddWrkrMainLGrid" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <!-- Грид примечания расстягивается, все остальны константны -->
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- ФИО-данные -->
+                        <Grid x:Name="FIOGrid" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkSrNm" Text="Прізвище" Style="{StaticResource TxtBlkStyle}"/>
+                            <TextBox Grid.Row="2" x:Name="TxtBxSrNm" Style="{StaticResource TxtBxStyle}"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkFrNm" Text="Ім'я" Style="{StaticResource TxtBlkStyle}"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxFrNm" Style="{StaticResource TxtBxStyle}" />
+                            <TextBlock Grid.Row="5" x:Name="TxtBlkPtrnm" Text="По батькові" Style="{StaticResource TxtBlkStyle}"/>
+                            <TextBox Grid.Row="6" x:Name="TxtBxPtrnm" Style="{StaticResource TxtBxStyle}" />
+                            <TextBlock Grid.Row="7" x:Name="TxtBlkSex" Text="Стать" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="8" x:Name="CmbBxSex"  Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+                            <TextBlock Grid.Row="9" x:Name="TxtBlkBirth" Text="Дата народження" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="10" x:Name="TxtBxBirth" Style="{StaticResource MskDateStyle}" />
+                            <TextBlock Grid.Row="11" x:Name="TxtBlkId" Text="Ідентефікаційний код" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="12" x:Name="TxtBxId" Style="{StaticResource TxtBxStyle}" Mask="0000000000"/>
+                            <TextBlock Grid.Row="13" x:Name="TxtBlkProf" Text="Професія за дипломом" Style="{StaticResource TxtBlkStyle}"/>
+                            <TextBox Grid.Row="14" x:Name="TxtBxProf" Style="{StaticResource TxtBxStyle}" />
+                            <TextBlock Grid.Row="15" x:Name="TxtBlkYrWrk" Text="Рік початку роботи в ОНУ" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="16" x:Name="TxtBxYrWrk" Style="{StaticResource MskYearStyle}" />
+                            <TextBlock Grid.Row="17" x:Name="TxtBlkDtNtr" Text="Дата вступу в ППО" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="18" x:Name="TxtBxDtNtr"  Style="{StaticResource MskDateStyle}" />
+                            <TextBlock Grid.Row="19" x:Name="TxtBlkMPhn" Text="Мобільний номер" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="20" x:Name="TxtBxMPhn" Style="{StaticResource MskMbleStyle}" />
+                            <TextBlock Grid.Row="21" x:Name="TxtBlkCPhn" Text="Міський номер" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="22" x:Name="TxtBxCPhn" Style="{StaticResource MskPhneStyle}" />
+                        </Grid>
+                        <!-- Чекбоксы -->
+                        <Grid x:Name="ChckbxGrid" Grid.Row="1" Margin="10,10,15,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="141*"/>
+                                <ColumnDefinition Width="22*"/>
+                                <ColumnDefinition Width="142*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <CheckBox Grid.Column="0"  Grid.Row="0" x:Name="ChkBxQlf" Content="Кваліфікація" Style="{StaticResource ChkBxStyle}" Unchecked="ChkBxQlf_Unchecked" Checked="ChkBxQlf_Checked" />
+                            <CheckBox Grid.Column="1"  Grid.Row="0" x:Name="ChkBxPubPos" Content="Громадська посада" Style="{StaticResource ChkBxStyle}" Checked="ChkBxPubPos_Checked" Unchecked="ChkBxPubPos_Unchecked" Grid.ColumnSpan="2"/>
+                            <CheckBox Grid.Column="0"  Grid.Row="1" x:Name="ChkBxPrvlg" Content="Пільга" Style="{StaticResource ChkBxStyle}" Checked="ChkBxPrvlg_Checked" Unchecked="ChkBxPrvlg_Unchecked"/>
+                            <CheckBox Grid.Column="1"  Grid.Row="1" x:Name="ChkBxPrvAc" Content="Приватне житло" Style="{StaticResource ChkBxStyle}" Grid.ColumnSpan="2" Checked="ChkBxPrvAc_Checked" Unchecked="ChkBxPrvAc_Unchecked"/>
+                            <CheckBox Grid.Column="0"  Grid.Row="2" x:Name="ChkBxFUniv" Content="Від університету" Style="{StaticResource ChkBxStyle}" Checked="ChkBxFUniv_Checked" Unchecked="ChkBxFUniv_Unchecked"/>
+                            <CheckBox Grid.Column="1"  Grid.Row="2" x:Name="ChkBxHstl" Content="Гуртожиток" Style="{StaticResource ChkBxStyle}" Grid.ColumnSpan="2" Checked="ChkBxHstl_Checked" Unchecked="ChkBxHstl_Unchecked"/>
+                            <CheckBox Grid.Column="0"  Grid.Row="3" x:Name="ChkBxDprt" Content="Відомче" Style="{StaticResource ChkBxStyle}" Checked="ChkBxDprt_Checked" Unchecked="ChkBxDprt_Unchecked"/>
+                        </Grid>
+                        <!-- Примечание -->
+                        <Grid x:Name="NoteGrid" Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock x:Name="TxtBlkNote" Grid.Row="0" Text="Примітка" Style="{StaticResource TxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBox x:Name="BigTxtBxNote" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" Margin="{StaticResource BigTxtBxMrgn}" />
+                        </Grid>
+                        <!-- Кнопочка -->
+                        <Grid x:Name="AddBGrid" Grid.Row="3" Margin="2,0,0,0">
+                            <Button  Style="{StaticResource BtnStyle}">Додати співробітника</Button>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Средний грид колонна -->
+                    <Grid x:Name="TabAddWrkrMainCGrid" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="EducGrid" Grid.Row="0" Style="{StaticResource CntntGridStyle}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkEducation" Text="Освіта" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkEdLvl" Text="Рівень освіти" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="2" x:Name="CmbBxEdLvl" Style="{StaticResource CmbBxStyle}"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkEdPlc" Text="Місце навчання" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="4" x:Name="CmbBxEdPlc" Style="{StaticResource CmbBxStyle}"/>
+                            <TextBlock Grid.Row="5" x:Name="TxtBlkEdYe" Text="Рік отримання" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="6" x:Name="TxtBxEdYe" Style="{StaticResource MskYearStyle}" />
+                        </Grid>
+                        <Grid x:Name="StructGrid" Grid.Row="1" Style="{StaticResource CntntGridStyle}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkStructure" Text="Структурний підрозділ\Посада" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkStrkU" Text="Структурний підрозділ" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="2" x:Name="CmbBxStrkU" Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkCha" Text="Кафедра" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="4" x:Name="CmbBxCha" Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+                            <TextBlock Grid.Row="5" x:Name="TxtBlkTitle" Text="Назва посади" Style="{StaticResource TxtBlkStyle}"/>
+                            <ComboBox Grid.Row="6" x:Name="CmbBxTitle" Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+                            <TextBlock Grid.Row="7" x:Name="TxtBlkTitleYe" Text="З якого року на посаді" Style="{StaticResource TxtBlkStyle}"/>
+                            <xctk:MaskedTextBox Grid.Row="8" x:Name="TxtBxTitleYe" Style="{StaticResource MskYearStyle}" />
+                        </Grid>
+                        <Grid x:Name="QualGrid" Grid.Row="2" Style="{StaticResource CntntGridStyle}"
+                              IsEnabled="{Binding ElementName=ChkBxQlf, Path=IsChecked, TargetNullValue=false}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkQualification" Text="Кваліфікація" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkAcdmDgr" Text="Учений ступінь" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="2" x:Name="CmbBxAcdmDgr" Style="{StaticResource CmbBxStyle}"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkScntRnk" Text="Наукове звання" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="4" x:Name="CmbBxScntRnk" Style="{StaticResource CmbBxStyle}"/>
+                        </Grid>
+                        <Grid x:Name="PublPosGrid" Grid.Row="3" Style="{StaticResource CntntGridStyle}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkPublPos" Text="Громадська посада\Пільга" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkPblPsNme" Text="Назва громадської посади" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="2" x:Name="TxtBxPblPsNme" Style="{StaticResource CmbBxStyle}" IsEnabled="{Binding ElementName=ChkBxPubPos, Path=IsChecked, TargetNullValue=false}" IsEditable="False"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkPblPsNte" Text="Примітка громадської посади" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxPblPsNte" Style="{StaticResource TxtBxStyle}" IsEnabled="{Binding ElementName=ChkBxPubPos, Path=IsChecked, TargetNullValue=false}" />
+                            <TextBlock Grid.Row="5" x:Name="TxtBlkPrvlgNme" Text="Назва пільги" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="6" x:Name="TxtBxPrvlgNme" Style="{StaticResource CmbBxStyle}" IsEnabled="{Binding ElementName=ChkBxPrvlg, Path=IsChecked, TargetNullValue=false}" IsEditable="False"/>
+                            <TextBlock Grid.Row="7" x:Name="TxtBlkPrvlgNte" Text="Примітка пільги" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="8" x:Name="TxtBxPrvlgNte" Style="{StaticResource TxtBxStyle}" IsEnabled="{Binding ElementName=ChkBxPrvlg, Path=IsChecked, TargetNullValue=false}"/>
+                        </Grid>
+
+                        <GridSplitter Grid.Row="0" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False" />
+                        <GridSplitter Grid.Row="1" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False"/>
+                        <GridSplitter Grid.Row="2" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False"/>
+                    </Grid>
+
+                    <!-- Правый грид колонна -->
+                    <Grid x:Name="TabAddWrkrMainRGrid" Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="9*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="PrvtHmGrid" Grid.Row="0" Style="{StaticResource CntntGridStyle}" 
+                              IsEnabled="{Binding ElementName=ChkBxPrvAc, Path=IsChecked, TargetNullValue=false}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkPrvHome" Text="Приватне житло" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center" />
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkHmCty" Text="Місто" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" x:Name="TxtBxHmCty" Style="{StaticResource TxtBxStyle}"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkHmStrt" Text="Вулиця" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxHmStrt" Style="{StaticResource TxtBxStyle}"/>
+                            <TextBlock Grid.Row="5" x:Name="TxtBlkHmNmbr" Text="Номер дому" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="6" x:Name="TxtBxHmNmbr" Style="{StaticResource TxtBxStyle}"/>
+                            <TextBlock Grid.Row="7" x:Name="TxtBlkApNmbr" Text="Номер квартири" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="8" x:Name="TxtBxApNmbr" Style="{StaticResource TxtBxStyle}"/>
+                        </Grid>
+                        <Grid x:Name="ByUnivGrid" Grid.Row="1" Style="{StaticResource CntntGridStyle}" 
+                              IsEnabled="{Binding ElementName=ChkBxFUniv, Path=IsChecked, TargetNullValue=false}" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkBU" Text="Від університету" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center" />
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkBUHmCty" Text="Місто" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="2" x:Name="TxtBxBUHmCty" Style="{StaticResource TxtBxStyle}" />
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkBUHmStrt" Text="Вулиця" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxBUHmStrt" Style="{StaticResource TxtBxStyle}" />
+                            <Grid Grid.Row="5"  x:Name="ByUnivNumbersGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" x:Name="TxtBlkBUHmNmbr" Text="Номер дому" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                                <TextBox Grid.Column="0" Grid.Row="1" x:Name="TxtBxBUHmNmbr" Style="{StaticResource TxtBxStyle}" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" x:Name="TxtBlkBUApNmbr" Text="Номер квартири" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                                <TextBox Grid.Column="1" Grid.Row="1" x:Name="TxtBxBUApNmbr" Style="{StaticResource TxtBxStyle}" />
+
+                            </Grid>
+                            <TextBlock Grid.Row="6" x:Name="TxtBlkBUDate" Text="Дата розподілу" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <xctk:MaskedTextBox Grid.Row="7" x:Name="TxtBxBUDate" Style="{StaticResource MskDateStyle}" />
+                        </Grid>
+                        <Grid x:Name="HostelGrid" Grid.Row="2" Style="{StaticResource CntntGridStyle}"
+                              IsEnabled="{Binding ElementName=ChkBxHstl, Path=IsChecked, TargetNullValue=false}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkHstl" Text="Гуртожиток" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkHstlNmb" Text="Номер гуртожитку" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="2" x:Name="TxtBxHstlNmb" Style="{StaticResource CmbBxStyle}" IsEditable="False" />
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkHstlRmNmb" Text="Номер кімнати" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxHstlRmNmb" Style="{StaticResource TxtBxStyle}" />
+                        </Grid>
+                        <Grid x:Name="DprtmntalGrid" Grid.Row="3" Style="{StaticResource CntntGridStyle}"
+                              IsEnabled="{Binding ElementName=ChkBxDprt, Path=IsChecked, TargetNullValue=false}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" x:Name="TxtBlkDprtmntal" Text="Відомче" Style="{StaticResource HdrTxtBlkStyle}" TextAlignment="Center"/>
+                            <TextBlock Grid.Row="1" x:Name="TxtBlkDprtmntalAdrs" Text="Адреса відомчого" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <ComboBox Grid.Row="2" x:Name="TxtBxDprtmntalAdrs" Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+                            <TextBlock Grid.Row="3" x:Name="TxtBlkDprtmntalRmNmb" Text="Номер кімнати" Style="{StaticResource TxtBlkStyle}" Foreground="Gray"/>
+                            <TextBox Grid.Row="4" x:Name="TxtBxDprtmntalRmNmb" Style="{StaticResource TxtBxStyle}" />
+                        </Grid>
+
+                        <GridSplitter Grid.Row="0" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False"/>
+                        <GridSplitter Grid.Row="1" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False"/>
+                        <GridSplitter Grid.Row="2" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False"/>
+                    </Grid>
+
+
+                    <!-- Гридсплиттеры - ползунки для регулировки ширины гридов пользователем. Две штуки, по средней колонке -->
+                    <GridSplitter Grid.Column="0" ShowsPreview="False" Width="5"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" ShowsPreview="False" Width="5"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Довідкова інформація #1 -->
+            <TabItem Header="Довідкова інформація #1" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabInf1MainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabInf1tMainPstsGrid" Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf1PstsID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf1PstsID" Style="{StaticResource TxtBxStyle}" IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf1PstsNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf1PstsNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf1PstsAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf1PstsUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf1PstsDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf1PstsClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="1" Grid.Row="0" Content="Посади" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf1MainPstsData" Grid.Column="1" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf1MainAwrdsGrid" Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf1AwrdID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf1AwrdID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf1AwrdNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf1AwrdNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf1AwrdAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf1AwrdUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf1AwrdDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf1AwrdClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="3" Grid.Row="0" Content="Премії" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf1MainAwrdsData" Grid.Column="3" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf1MainStncGrid" Grid.Column="4" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf1StncID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf1StncID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf1StncNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf1StncNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf1StncAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf1StncUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf1StncDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf1StncClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="5" Grid.Row="0" Content="Матеріальні допомоги" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf1MainStncData" Grid.Column="5" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="6" Height="3" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Bottom" IsTabStop="False" IsEnabled="False"/>
+                    <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="3" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="4" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Довідкова інформація #2 -->
+            <TabItem Header="Довідкова інформація #2" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabInf2MainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabInf2tMainPPstsGrid" Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf2PPstsID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf2PPstsID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf2PPstsNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf2PPstsNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf2PPstsAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf2PPstsUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf2PPstsDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf2PPstsClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="1" Grid.Row="0" Content="Громадські посади" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf2MainPPstsData" Grid.Column="1" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf2MainPrwlgGrid" Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf2PrwlgID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf2PrwlgID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf2PrwlgNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf2PrwlgNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf2PrwlgAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf2PrwlgUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf2PrwlgDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf2PrwlgClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="3" Grid.Row="0" Content="Пільги" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf2MainPrwlgData" Grid.Column="3" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf2MainHbyGrid" Grid.Column="4" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf2HbyID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf2HbyID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf2HbyNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf2HbyNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf2HbyAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf2HbyUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf2HbyDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf2HbyClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="5" Grid.Row="0" Content="Хобі" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf2MainHbyData" Grid.Column="5" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="6" Height="3" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Bottom" IsTabStop="False" IsEnabled="False"/>
+                    <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="3" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="4" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Довідкова інформація #3 -->
+            <TabItem Header="Довідкова інформація #3" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabInf3MainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabInf3tMainTrpsGrid" Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf3TrpsID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf3TrpsID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf3TrpsNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf3TrpsNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf3TrpsAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf3TrpsUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf3TrpsDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf3TrpsClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="1" Grid.Row="0" Content="Подорожі" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf3MainTrpsData" Grid.Column="1" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf3MainSntGrid" Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf3SntID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf3SntID" Style="{StaticResource TxtBxStyle}"  IsEnabled="False"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf3SntNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf3SntNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf3SntAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf3SntUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf3SntDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf3SntClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="3" Grid.Row="0" Content="Оздоровлення" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf3MainSntData" Grid.Column="3" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf3MainTrsGrid" Grid.Column="4" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf3TrsID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf3TrsID" Style="{StaticResource TxtBxStyle}" IsEnabled="False" />
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf3TrsNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf3TrsNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf3TrsAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf3TrsUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf3TrsDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf3TrsClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="5" Grid.Row="0" Content="Путівки" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf3MainTrsData" Grid.Column="5" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="6" Height="3" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Bottom" IsTabStop="False" IsEnabled="False"/>
+                    <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="3" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="4" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Довідкова інформація #4 -->
+            <TabItem Header="Довідкова інформація #4" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabInf4MainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabInf4tMainStblsGrid" Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf4StblsID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf4StblsID" Style="{StaticResource TxtBxStyle}" IsEnabled="False" />
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf4StblsNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf4StblsNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf4StblsAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="6" x:Name="BtnInf4StblsUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="7" x:Name="BtnInf4StblsDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf4StblsClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="1" Grid.Row="0" Content="Кул. Прос. Заклади" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf4MainStblsData" Grid.Column="1" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf4MainPdNmGrid" Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf4PdNmID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf4PdNmID" Style="{StaticResource TxtBxStyle}" IsEnabled="False" />
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf4PdNmNme" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf4PdNmNme" Style="{StaticResource TxtBxStyle}"  />
+                        <Button Grid.Row="5" x:Name="BtnInf4PdNmAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="8" x:Name="BtnInf4PdNmClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="3" Grid.Row="0" Content="Назви структурних підрозділів" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf4MainPdNmData" Grid.Column="3" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="6" Height="3" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Bottom" IsTabStop="False" IsEnabled="False"/>
+                    <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="3" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="4" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Довідкова інформація #5 -->
+            <TabItem Header="Довідкова інформація #5" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabInf5MainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="237*"/>
+                        <ColumnDefinition Width="459*"/>
+                        <ColumnDefinition Width="244*"/>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="134*"/>
+                        <ColumnDefinition Width="325*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabInf5MainDprtmGrid" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf5DprtmID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf5DprtmID" Style="{StaticResource TxtBxStyle}" IsEnabled="False" />
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf5DprtmCty" Text="Місто" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf5DprtmCty" Style="{StaticResource TxtBxStyle}"  />
+                        <TextBlock Grid.Row="4" x:Name="TxtBlkInf5DprtmStrt" Text="Вулиця" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="5" x:Name="TxtBxInf5DprtmStrt" Style="{StaticResource TxtBxStyle}"  />
+                        <TextBlock Grid.Row="6" x:Name="TxtBlkInf5DprtmHmNb" Text="Номер дому" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="7" x:Name="TxtBxInf5DprtmHmNb" Style="{StaticResource TxtBxStyle}"  />
+
+                        <Button Grid.Row="9" x:Name="BtnInf5DprtmAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="10" x:Name="BtnInf5DprtmUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="11" x:Name="BtnInf5DprtmDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="12" x:Name="BtnInf5DprtmClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="2" Grid.Row="0" Content="Відомчі" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabInf5MainDprtmData" Grid.Column="2" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                    <Grid x:Name="TabInf5MainHstlGrid" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkInf5HstlID" Text="ID" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxInf5HstlID" Style="{StaticResource TxtBxStyle}" IsEnabled="False" />
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkInf5HstlNmb" Text="Назва" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxInf5HstlNmb" Style="{StaticResource TxtBxStyle}"  />
+                        <TextBlock Grid.Row="4" x:Name="TxtBlkInf5HstlCty" Text="Місто" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="5" x:Name="TxtBxInf5HstlCty" Style="{StaticResource TxtBxStyle}"  />
+                        <TextBlock Grid.Row="6" x:Name="TxtBlkInf5HstlStrt" Text="Вулиця" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="7" x:Name="TxtBxInf5HstlStrt" Style="{StaticResource TxtBxStyle}"  />
+                        <TextBlock Grid.Row="8" x:Name="TxtBlkInf5HstlHNm" Text="Номер дому" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="9" x:Name="TxtBxInf5HstlHNm" Style="{StaticResource TxtBxStyle}"  />
+
+
+                        <Button Grid.Row="11" x:Name="BtnInf5HstlAdd" Style="{StaticResource BtnStyle}">Додати</Button>
+                        <Button Grid.Row="12" x:Name="BtnInf5HstlUpd" Style="{StaticResource BtnStyle}">Оновити</Button>
+                        <Button Grid.Row="13" x:Name="BtnInf5HstlDel" Style="{StaticResource BtnStyle}">Видалити</Button>
+                        <Button Grid.Row="14" x:Name="BtnInf5HstlClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <Label Grid.Column="5" Grid.Row="0" Content="Гуртожитки" Style="{StaticResource LblHdrStyle}" Grid.ColumnSpan="2"/>
+
+                    <DataGrid x:Name="TabInf5MainHstlData" Grid.Column="5" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}" Grid.ColumnSpan="2"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="7" Height="3" HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Bottom" IsTabStop="False" IsEnabled="False"/>
+                    <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="4" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="6" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="6" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Пошук -->
+            <TabItem Header="Пошук" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabSearchMainGrid" ShowGridLines="False">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="TabSearchMainSrnmGrid" Grid.Column="0" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchSrnm" Text="По прізвищу" Style="{StaticResource  SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchSrnmSrnm" Text="Прізвище" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="2" x:Name="TxtBxSearchSrnmSrnm" Style="{StaticResource TxtBxStyle}"/>
+
+                        <Button Grid.Row="4" x:Name="BtnSearchSrnmSrnm" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainSrnmNmGrid" Grid.Column="1" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchSrnmNm" Text="По прізвищу і імені" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchSrnmSrnmNm" Text="Прізвище" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="2" x:Name="TxtBxSearchSrnmSrnmNm" Style="{StaticResource TxtBxStyle}"/>
+                        <TextBlock Grid.Row="3" x:Name="TxtBlkSearchSrnmSrnmNmNm" Text="Ім'я" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="4" x:Name="TxtBxSearchSrnmNmNm" Style="{StaticResource TxtBxStyle}"/>
+
+                        <Button Grid.Row="6" x:Name="BtnSearchSrnmSrnmNm" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainFIO" Grid.Column="2" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchFIO" Text="По ПІБ" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchFIOSrnm" Text="Прізвище" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="2" x:Name="TxtBxSearchFIOSrnm" Style="{StaticResource TxtBxStyle}"/>
+                        <TextBlock Grid.Row="3" x:Name="TxtBlkSearchFIONm" Text="Ім'я" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="4" x:Name="TxtBxSearchFIONm" Style="{StaticResource TxtBxStyle}"/>
+                        <TextBlock Grid.Row="5" x:Name="TxtBlkSearchFIOPtr" Text="По батькові" Style="{StaticResource TxtBlkStyle}"/>
+                        <TextBox Grid.Row="6" x:Name="TxtBxSearchFIOPtr" Style="{StaticResource TxtBxStyle}"/>
+
+                        <Button Grid.Row="8" x:Name="BtnSearchFIO" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainStrkGrid" Grid.Column="3" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchStrk" Text="По структ. підрозділу" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchStrkStrk" Text="Структурний підрозділ" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="2" x:Name="CmbBxSearchStrkStrk" Style="{StaticResource CmbBxStyle}"/>
+
+                        <Button Grid.Row="4" x:Name="BtnSearchStrk" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainChldGrid" Grid.Column="4" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchChld" Text="По наявності дітей" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <RadioButton GroupName="SrchChldY" Grid.Row="1" x:Name="ChkBxSearchChldY" Content="Дітей має" Style="{StaticResource RdBtnStyle}" IsChecked="True"/>
+                        <RadioButton GroupName="SrchChldY" Grid.Row="2" x:Name="ChkBxSearchChldN" Content="Дітей немає" Style="{StaticResource RdBtnStyle}" />
+
+                        <Button Grid.Row="4" x:Name="BtnSearchChld" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainChldDtGrid" Grid.Column="0" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkChldDtStrk" Text="По даті народження дітей" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkChldDtDate" Text="Дата народження" Style="{StaticResource TxtBlkStyle}"/>
+                        <xctk:MaskedTextBox Grid.Row="2" x:Name="TxtBxChldDtDate" Style="{StaticResource MskDateStyle}"/>
+
+                        <Button Grid.Row="4" x:Name="BtnChldDt" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainDwlGrid" Grid.Column="1" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchDwl" Text="По житлу" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <RadioButton GroupName="SrchDwl" Grid.Row="1" x:Name="ChkBxSearchDwlD" Content="Відомче" Style="{StaticResource RdBtnStyle}" IsChecked="True"/>
+                        <RadioButton GroupName="SrchDwl" Grid.Row="2" x:Name="ChkBxSearchDwlH" Content="Гуртожиток" Style="{StaticResource RdBtnStyle}" />
+                        <RadioButton GroupName="SrchDwl" Grid.Row="3" x:Name="ChkBxSearchDwlU" Content="Від університету" Style="{StaticResource RdBtnStyle}" />
+
+                        <Button Grid.Row="5" x:Name="BtnSearchDwl" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainScRnGrid" Grid.Column="2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkScRn" Text="По науковому званню" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchScRn" Text="Наукове звання" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="2" x:Name="CmbBxSearchScRn" Style="{StaticResource CmbBxStyle}"/>
+
+                        <Button Grid.Row="4" x:Name="BtnScRnDwl" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainPrvlgGrid" Grid.Column="3" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkPrvlg" Text="По пільговикам" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchPrvlgNm" Text="Назва пільги" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="2" x:Name="CmbBxSearchPrvlgNm" Style="{StaticResource CmbBxStyle}"/>
+                        <TextBlock Grid.Row="3" x:Name="TxtBlkSearchPrvlgStr" Text="Структурний підрозділ" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="4" x:Name="CmbBxSearchPrvlgStr" Style="{StaticResource CmbBxStyle}"/>
+
+                        <Button Grid.Row="6" x:Name="BtnPrvlgDwl" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <Grid x:Name="TabSearchMainHbyGrid" Grid.Column="4" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkSearchHby" Text="По хобі" Style="{StaticResource SrcHdrTxtBlkStyle}"/>
+                        <TextBlock Grid.Row="1" x:Name="TxtBlkSearchHbyNm" Text="Назва хобі" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="2" x:Name="CmbBxSearchHby" Style="{StaticResource CmbBxStyle}"/>
+
+                        <Button Grid.Row="4" x:Name="BtnSearchHby" Style="{StaticResource BtnStyle}">Знайти</Button>
+                    </Grid>
+
+                    <GridSplitter Grid.Column="0" Grid.RowSpan="3" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="1" Grid.RowSpan="3" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="2" Grid.RowSpan="3" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+                    <GridSplitter Grid.Column="3" Grid.RowSpan="3" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                    <GridSplitter Grid.Row="0" Grid.ColumnSpan="5" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False" />
+                    <GridSplitter Grid.Row="1" Grid.ColumnSpan="5" Height="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsTabStop="False" />
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Управління доступом -->
+            <TabItem Header="Управління доступом" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabAcsMainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="57*"/>
+                        <ColumnDefinition Width="325*"/>
+                        <ColumnDefinition Width="1148*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid x:Name="TabAcsMainDprtmGrid" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="39*"/>
+                            <ColumnDefinition Width="343*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkAcsLogin" Text="Логін" Style="{StaticResource TxtBlkStyle}" Grid.ColumnSpan="2"/>
+                        <TextBox Grid.Row="1" x:Name="TxtBxAcsLogin" Style="{StaticResource TxtBxStyle}" Grid.ColumnSpan="2"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkAcsPswrd" Text="Пароль" Style="{StaticResource TxtBlkStyle}" Grid.ColumnSpan="2"/>
+                        <TextBox Grid.Row="3" x:Name="TxtBxAcsPswrd" Style="{StaticResource TxtBxStyle}" Grid.ColumnSpan="2"/>
+                        <TextBlock Grid.Row="4" x:Name="TxtBlkAcsRole" Text="Роль доступу" Style="{StaticResource TxtBlkStyle}" Grid.ColumnSpan="2"/>
+                        <ComboBox Grid.Row="5" x:Name="CmbBxAcsRole" Style="{StaticResource CmbBxStyle}" IsEditable="False" Grid.ColumnSpan="2"/>
+
+                        <Button Grid.Row="7" x:Name="BtnAcsDprtmAdd" Style="{StaticResource BtnStyle}" Grid.ColumnSpan="2">Додати користувача</Button>
+                        <Button Grid.Row="8" x:Name="BtnAcsDprtmUpd" Style="{StaticResource BtnStyle}" Grid.ColumnSpan="2">Змінити пароль</Button>
+                        <Button Grid.Row="9" x:Name="BtnAcsDprtmDel" Style="{StaticResource BtnStyle}" Grid.ColumnSpan="2">Видалити користувача</Button>
+                        <Button Grid.Row="10" x:Name="BtnAcsDprtmClr" Style="{StaticResource BtnStyle}" Grid.ColumnSpan="2">Очистити поля</Button>
+                    </Grid>
+
+                    <DataGrid x:Name="TabAcsMainDprtmData" Grid.Column="2" Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Журнал дій користувача -->
+            <TabItem Header="Журнал дій" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabLogMainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid x:Name="TabLogMainGridFilter" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="TxtBlkLogLogin" Text="Дата та час з" Style="{StaticResource TxtBlkStyle}"/>
+                        <xctk:MaskedTextBox Grid.Row="1" x:Name="TxtBxLogLogin" Style="{StaticResource MskDateTimeStyle}"/>
+                        <TextBlock Grid.Row="2" x:Name="TxtBlkLogPswrd" Text="Дата та час по" Style="{StaticResource TxtBlkStyle}"/>
+                        <xctk:MaskedTextBox Grid.Row="3" x:Name="TxtBxLogPswrd" Style="{StaticResource MskDateTimeStyle}"/>
+                        <TextBlock Grid.Row="4" x:Name="TxtBlkLogRole" Text="Логін" Style="{StaticResource TxtBlkStyle}"/>
+                        <ComboBox Grid.Row="5" x:Name="CmbBxLogRole" Style="{StaticResource CmbBxStyle}" IsEditable="False"/>
+
+                        <Button Grid.Row="8" x:Name="BtnLogDprtmUpd" Style="{StaticResource BtnStyle}">Фільтувати</Button>
+                        <Button Grid.Row="9" x:Name="BtnLogDprtmDel" Style="{StaticResource BtnStyle}">За замовчуванням</Button>
+                        <Button Grid.Row="10" x:Name="BtnLogDprtmClr" Style="{StaticResource BtnStyle}">Очистити поля</Button>
+                    </Grid>
+
+                    <DataGrid x:Name="TabLogMainData" Grid.Column="1" Style="{StaticResource DtGrdStyle}"/>
+
+                    <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Список доданих -->
+            <TabItem Header="Список доданих" Style="{StaticResource TabCLStyle}">
+                <Grid x:Name="TabAddedMainGrid" ShowGridLines="False">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Список доданих співробітників" Style="{StaticResource LblHdrStyle}"/>
+
+                    <DataGrid x:Name="TabAddedData" Grid.Row="1" 
+                              Style="{StaticResource DtGrdStyle}"/>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <Grid x:Name="Buttons" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Add" Grid.Row="0" Click="Add_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Text="Додати співробітника"/>
+            </Button>
+            <Button x:Name="Added" Grid.Row="1" VerticalAlignment="Top" Click="Added_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Список доданих
+                    <LineBreak />
+                    співробітників
+                </TextBlock>
+            </Button>
+            <Button x:Name="b8" Grid.Row="2" Click="Acs_Click" Style="{StaticResource MnBtnStyle}">Управління доступом</Button>
+            <Button x:Name="b9" Grid.Row="3" Click="Log_Click" Style="{StaticResource MnBtnStyle}">Журнал дій користувачів</Button>
+            <Button x:Name="b7" Grid.Row="4" Click="Srch_Click" Style="{StaticResource MnBtnStyle}">Пошук</Button>
+
+            <TextBlock Grid.Row="6" Text="Довідкова інформація" TextAlignment="Center" FontSize="14"/>
+            <Button x:Name="b2" Grid.Row="7" Click="b2_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Посади, Премії
+                    <LineBreak />
+                    Мат. допомоги
+                </TextBlock>
+            </Button>
+            <Button x:Name="b3" Grid.Row="8" Click="b3_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Громадські посади
+                    <LineBreak />
+                    Пільги, Хобі
+                </TextBlock>
+            </Button>
+            <Button x:Name="b4" Grid.Row="9" Click="b4_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Подорожі, Путівки
+                    <LineBreak />
+                    Оздоровлення
+                </TextBlock>
+            </Button>
+            <Button x:Name="b5" Grid.Row="10" Click="b5_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Кул.Прос. Заклади
+                    <LineBreak />
+                    Назви підрозділів
+                </TextBlock>
+            </Button>
+            <Button x:Name="b6" Grid.Row="11" Click="b6_Click" Style="{StaticResource MnBtnStyle}">
+                <TextBlock Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap">
+                    Відомчі, Гуртожитки
+                </TextBlock>
+            </Button>
+
+            <Button x:Name="Exit" Grid.Row="14" VerticalAlignment="Top" Click="Exit_Click" Style="{StaticResource MnBtnStyle}">Вихід</Button>
+
+        </Grid>
+
+        <GridSplitter Grid.Column="0" Grid.Row="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Right" VerticalAlignment="Stretch" IsTabStop="False"/>
+    </Grid>
+</Window>

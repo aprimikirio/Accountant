@@ -1,0 +1,123 @@
+D:\Documents\VisualStudio\WRK\WRK\bin\Debug\WRK.exe.config
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\WRK.exe
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\WRK.pdb
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.csprojResolveAssemblyReference.cache
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\MainWindow.baml
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\MainWindow.g.cs
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\App.g.cs
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK_MarkupCompile.cache
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.g.resources
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.Properties.Resources.resources
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.csproj.GenerateResource.Cache
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.exe
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\WRK.pdb
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.DataGrid.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\SubdivisionWindow.baml
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\SubdivisionWindow.g.cs
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\SearchWindow.baml
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\SearchWindow.g.cs
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\EmployeesInfoWindow.baml
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\EmployeesInfoWindow.g.cs
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\AuthorizationWindow.baml
+D:\Documents\VIsualStudio\WRK\WRK\obj\Debug\AuthorizationWindow.g.cs
+E:\WRK\WRK\bin\Debug\WRK.exe.config
+E:\WRK\WRK\obj\Debug\WRK.exe
+E:\WRK\WRK\obj\Debug\WRK.pdb
+E:\WRK\WRK\bin\Debug\WRK.exe
+E:\WRK\WRK\bin\Debug\WRK.pdb
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.dll
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.DataGrid.dll
+E:\WRK\WRK\bin\Debug\Xceed.Wpf.Toolkit.dll
+E:\WRK\WRK\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+E:\WRK\WRK\obj\Debug\WRK.csprojResolveAssemblyReference.cache
+E:\WRK\WRK\obj\Debug\AuthorizationWindow.baml
+E:\WRK\WRK\obj\Debug\EmployeesInfoWindow.baml
+E:\WRK\WRK\obj\Debug\MainWindow.baml
+E:\WRK\WRK\obj\Debug\SearchWindow.baml
+E:\WRK\WRK\obj\Debug\SubdivisionWindow.baml
+E:\WRK\WRK\obj\Debug\AuthorizationWindow.g.cs
+E:\WRK\WRK\obj\Debug\EmployeesInfoWindow.g.cs
+E:\WRK\WRK\obj\Debug\MainWindow.g.cs
+E:\WRK\WRK\obj\Debug\SearchWindow.g.cs
+E:\WRK\WRK\obj\Debug\SubdivisionWindow.g.cs
+E:\WRK\WRK\obj\Debug\App.g.cs
+E:\WRK\WRK\obj\Debug\WRK_MarkupCompile.cache
+E:\WRK\WRK\obj\Debug\WRK.g.resources
+E:\WRK\WRK\obj\Debug\WRK.Properties.Resources.resources
+E:\WRK\WRK\obj\Debug\WRK.csproj.GenerateResource.Cache
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\WRK.exe.config
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.exe
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.pdb
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.csprojResolveAssemblyReference.cache
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\AuthorizationWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\EmployeesInfoWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\MainWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\SearchWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\SubdivisionWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\AuthorizationWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\EmployeesInfoWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\MainWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\SearchWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\SubdivisionWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\App.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK_MarkupCompile.cache
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.g.resources
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.Properties.Resources.resources
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\WRK.csproj.GenerateResource.Cache
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\WRK.exe
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\WRK.pdb
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.DataGrid.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantEmployeesInfoWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantMainWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantSubdivisionWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantEmployeesInfoWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantMainWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Accountant\AccountantSubdivisionWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceEmployeesInfoWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceMainWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceSubdivisionWindow.baml
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceEmployeesInfoWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceMainWindow.g.cs
+C:\Users\Stanley\Desktop\WRK - 2 0\WRK\obj\Debug\Vice\ViceSubdivisionWindow.g.cs
